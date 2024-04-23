@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linguagem Neutra</title>
+</head>
+
+<body>
+
+<textarea name="textoNaoConvertido" id="textoNaoConvertido" cols="50" rows="10">Insira aqui o texto a ser convertido</textarea>
+<br>
+<br>
+<button type="button" onclick="pegarTexto()">Converter para Linguagem Neutra</button>
+<br>
+<br>
+<textarea name="textoConvertido" id="textoConvertido" cols="50" rows="10">...</textarea>
+    <script>
+        let textoNormal;
+        let textoJaConvertido; 
+        function pegarTexto(){
+            textoNormal = document.getElementById("textoNaoConvertido").value;
+            textoJaConvertido = document.getElementById("textoConvertido");
+            textoJaConvertido.value = "";
+
+        const VOGAIS = ["a", "e", "i", "o", "u"];
+        let textoNeutro = [];
+
+        arraySeparado = textoNormal.split(" ");
+
+        arraySeparado.map((item, indice) => {
+
+            let posicaoArraySeparada = item.split("");
+
+            posicaoArraySeparada = posicaoArraySeparada.reverse();
+
+
+            for (let i = 0; i <= posicaoArraySeparada.length; i++) {
+                if (VOGAIS.includes(posicaoArraySeparada[i])) {
+                    posicaoArraySeparada[i] = "e";
+                    break;
+                }
+
+            }
+
+            posicaoArraySeparada = posicaoArraySeparada.reverse();
+            posicaoArraySeparada = posicaoArraySeparada.join("");
+            posicaoArraySeparada += " ";
+            console.log(posicaoArraySeparada);
+            textoJaConvertido.value += posicaoArraySeparada;
+        })
+    }
+    </script>
+</body>
+
+</html>
